@@ -31,12 +31,14 @@ namespace DZ_01_04_21
 			services.AddDbContext<QuoteDbContext>(option =>
 			{
 				option.UseSqlServer(Configuration.GetConnectionString("Default")).UseLazyLoadingProxies();
-			});
+			});	
+
 			services.AddControllers();
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "DZ_01_04_21", Version = "v1" });
 			});
+			services.AddHostedService<QuoteService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
